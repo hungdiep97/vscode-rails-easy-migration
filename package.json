@@ -8,6 +8,11 @@
 	"engines": {
 		"vscode": "^1.46.0"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/diepsohung/vscode-rails-easy-migration.git"
+	},
+	"homepage": "https://github.com/diepsohung/vscode-rails-easy-migration",
 	"categories": [
 		"Programming Languages",
 		"Snippets",
@@ -73,6 +78,13 @@
 			}
 		]
 	},
+	"keywords": [
+		"Ruby on Rails",
+		"Ruby",
+		"Rails",
+		"Migration",
+		"Keybinding"
+	],
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",

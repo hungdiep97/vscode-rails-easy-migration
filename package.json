@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.migrateUp"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -22,13 +22,13 @@
 		],
 		"commands": [
 			{
-				"command": "extension.helloWorld",
+				"command": "extension.migrateUp",
 				"title": "Hello World"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "extension.helloWorld",
+				"command": "extension.migrateUp",
 				"key": "ctrl+m",
         "mac": "cmd+m",
         "when": "editorTextFocus"

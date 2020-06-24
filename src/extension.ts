@@ -1,9 +1,23 @@
 import * as vscode from 'vscode';
 
-let TERMINAL_NAME = "Rails easy migration";
+const TERMINAL_NAME = "Rails easy migration";
+const STRING_TO_SEPERATE = "/db/migrate/";
+const MIGRATE_SRIPT = "bundle exec rake db:migrate"
 
 function getCurrentFile() {
 	return vscode.window.activeTextEditor?.document.uri.path;
+}
+
+function getRootFolder() {
+	return getCurrentFile()?.split(STRING_TO_SEPERATE)[0];
+}
+
+function getMigrationFileName() {
+	return getCurrentFile()?.split(STRING_TO_SEPERATE)[1];
+}
+
+function getMigrationVersion() {
+	return getMigrationFileName()?.split("_")[0];
 }
 
 function getTerminal() {
@@ -18,18 +32,30 @@ function getTerminal() {
 
 function executeCommand(commandText: string) {
 	let easyMigrateTerminal = getTerminal();
-	easyMigrateTerminal.sendText(commandText);
+
+	if (isMigrateFolder()) {
+		vscode.commands.executeCommand("workbench.action.terminal.clear");
+		easyMigrateTerminal.sendText(`cd ${getRootFolder()} && ${commandText}`);
+	} else {
+		vscode.window.showWarningMessage("RailsEasyMigration: Only run on migrate folder.");
+	}
+}
+
+function isMigrateFolder() {
+	return getCurrentFile()?.indexOf(STRING_TO_SEPERATE) !== -1;
+}
+
+function executeMigrateUp() {
+	let upCommand = `${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
+	executeCommand(upCommand);
+	vscode.window.showInformationMessage(`Executing ${upCommand} ...`);
 }
 
 export function activate(context: vscode.ExtensionContext) {
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
 	context.subscriptions.push(
-		vscode.commands.registerCommand('extension.helloWorld', () => {
-			executeCommand('ls');
-			vscode.window.showInformationMessage('Hello from SoHung!');
+		vscode.commands.registerCommand("extension.migrateUp", () => {
+			executeMigrateUp();
 		})
 	);
 }

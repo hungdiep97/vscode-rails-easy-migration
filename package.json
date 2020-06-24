@@ -3,6 +3,7 @@
 	"displayName": "VS Code-Rails easy migration",
 	"description": "Some keybindings help you save time with Rails migration.",
 	"publisher": "DiepSoHung",
+	"icon": "rails-migration.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.46.0"
@@ -14,6 +15,7 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:extension.migrate",
 		"onCommand:extension.migrateUp",
 		"onCommand:extension.migrateDown",
 		"onCommand:extension.migrateRerun"

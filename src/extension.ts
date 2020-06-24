@@ -46,9 +46,8 @@ function isMigrateFolder() {
 }
 
 function executeMigrate() {
-	let command = `${MIGRATE_SRIPT} VERSION=${getMigrationVersion()}`;
-	executeCommand(command);
-	vscode.window.showInformationMessage(`Executing ${command} ...`);
+	executeCommand(MIGRATE_SRIPT);
+	vscode.window.showInformationMessage(`Running project migrations ...`);
 }
 
 function executeMigrateUp() {

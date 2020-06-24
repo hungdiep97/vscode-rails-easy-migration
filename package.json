@@ -2,7 +2,7 @@
 	"name": "vscode-rails-easy-migration",
 	"displayName": "VS Code-Rails easy migration",
 	"description": "Some keybindings help you save time with Rails migration.",
-	"publisher": "DiepSoHung",
+	"publisher": "HungDiep",
 	"icon": "rails-migration.png",
 	"version": "0.0.1",
 	"engines": {

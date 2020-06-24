@@ -47,25 +47,25 @@ function isMigrateFolder() {
 
 function executeMigrate() {
 	executeCommand(MIGRATE_SRIPT);
-	vscode.window.showInformationMessage(`Running project migrations ...`);
+	vscode.window.showInformationMessage(`⌘+m ⌘+m was pressed. Running project migrations ...`);
 }
 
 function executeMigrateUp() {
 	let upCommand = `${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
 	executeCommand(upCommand);
-	vscode.window.showInformationMessage(`Executing ${upCommand} ...`);
+	vscode.window.showInformationMessage(`⌘+m ⌘+u was pressed. Executing ${upCommand} ...`);
 }
 
 function executeMigrateDown() {
 	let downCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()}`;
 	executeCommand(downCommand);
-	vscode.window.showInformationMessage(`Executing ${downCommand} ...`);
+	vscode.window.showInformationMessage(`⌘+m ⌘+d was pressed. Executing ${downCommand} ...`);
 }
 
 function executeMigrateRerun() {
-	let reRunCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()} && ${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
+	let reRunCommand = `${MIGRATE_SRIPT}:redo VERSION=${getMigrationVersion()}`;
 	executeCommand(reRunCommand);
-	vscode.window.showInformationMessage(`Re-running version ${getMigrationVersion()} ...`);
+	vscode.window.showInformationMessage(`⌘+m ⌘+r was pressed. Re-running version ${getMigrationVersion()} ...`);
 }
 
 export function activate(context: vscode.ExtensionContext) {

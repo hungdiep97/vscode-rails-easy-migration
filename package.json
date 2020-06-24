@@ -28,6 +28,10 @@
 		],
 		"commands": [
 			{
+				"command": "extension.migrate",
+				"title": "Rails easy migration"
+			},
+			{
 				"command": "extension.migrateUp",
 				"title": "Rails easy migration Up"
 			},
@@ -42,6 +46,12 @@
 		],
 		"keybindings": [
 			{
+				"command": "extension.migrate",
+				"key": "ctrl+m ctrl+m",
+        "mac": "cmd+m cmd+m",
+        "when": "editorTextFocus"
+			},
+			{
 				"command": "extension.migrateUp",
 				"key": "ctrl+m ctrl+u",
         "mac": "cmd+m cmd+u",
@@ -51,6 +61,12 @@
 				"command": "extension.migrateDown",
 				"key": "ctrl+m ctrl+d",
         "mac": "cmd+m cmd+d",
+        "when": "editorTextFocus"
+			},
+			{
+				"command": "extension.migrateRerun",
+				"key": "ctrl+m ctrl+r",
+        "mac": "cmd+m cmd+r",
         "when": "editorTextFocus"
 			}
 		]

@@ -45,6 +45,12 @@ function isMigrateFolder() {
 	return getCurrentFile()?.indexOf(STRING_TO_SEPERATE) !== -1;
 }
 
+function executeMigrate() {
+	let command = `${MIGRATE_SRIPT} VERSION=${getMigrationVersion()}`;
+	executeCommand(command);
+	vscode.window.showInformationMessage(`Executing ${command} ...`);
+}
+
 function executeMigrateUp() {
 	let upCommand = `${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
 	executeCommand(upCommand);
@@ -66,6 +72,12 @@ function executeMigrateRerun() {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand("extension.migrate", () => {
+			executeMigrate();
+		})
+	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand("extension.migrateUp", () => {

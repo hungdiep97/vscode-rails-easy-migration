@@ -15,7 +15,8 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.migrateUp",
-		"onCommand:extension.migrateDown"
+		"onCommand:extension.migrateDown",
+		"onCommand:extension.migrateRerun"
 	],
 	"main": "./out/extension.js",
 	"contributes": {

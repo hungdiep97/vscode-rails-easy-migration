@@ -79,6 +79,12 @@ export function activate(context: vscode.ExtensionContext) {
 		})
 	);
 
+	context.subscriptions.push(
+		vscode.commands.registerCommand("extension.migrateRerun", () => {
+			executeMigrateRerun();
+		})
+	);
+
 }
 
 // this method is called when your extension is deactivated

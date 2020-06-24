@@ -51,6 +51,20 @@ function executeMigrateUp() {
 	vscode.window.showInformationMessage(`Executing ${upCommand} ...`);
 }
 
+function executeMigrateDown() {
+	let downCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()}`;
+	executeCommand(downCommand);
+	vscode.window.showInformationMessage(`Executing ${downCommand} ...`);
+}
+
+function executeMigrateRerun() {
+	let upCommand = `${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
+	let downCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()}`;
+	executeCommand(upCommand);
+	executeCommand(downCommand);
+	vscode.window.showInformationMessage(`Re-running version ${getMigrationVersion()} ...`);
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
@@ -58,6 +72,13 @@ export function activate(context: vscode.ExtensionContext) {
 			executeMigrateUp();
 		})
 	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand("extension.migrateDown", () => {
+			executeMigrateDown();
+		})
+	);
+
 }
 
 // this method is called when your extension is deactivated

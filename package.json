@@ -1,16 +1,21 @@
 {
 	"name": "vscode-rails-easy-migration",
 	"displayName": "VS Code-Rails easy migration",
-	"description": "I shipped some keybindings to help you save time with Rails migration.",
+	"description": "Some keybindings help you save time with Rails migration.",
+	"publisher": "DiepSoHung",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
 	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Extension Packs",
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.migrateUp"
+		"onCommand:extension.migrateUp",
+		"onCommand:extension.migrateDown"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -23,14 +28,28 @@
 		"commands": [
 			{
 				"command": "extension.migrateUp",
-				"title": "Hello World"
+				"title": "Rails easy migration Up"
+			},
+			{
+				"command": "extension.migrateDown",
+				"title": "Rails easy migration Down"
+			},
+			{
+				"command": "extension.migrateRerun",
+				"title": "Rails easy migration Rerun"
 			}
 		],
 		"keybindings": [
 			{
 				"command": "extension.migrateUp",
-				"key": "ctrl+m",
-        "mac": "cmd+m",
+				"key": "ctrl+m ctrl+u",
+        "mac": "cmd+m cmd+u",
+        "when": "editorTextFocus"
+			},
+			{
+				"command": "extension.migrateDown",
+				"key": "ctrl+m ctrl+d",
+        "mac": "cmd+m cmd+d",
         "when": "editorTextFocus"
 			}
 		]

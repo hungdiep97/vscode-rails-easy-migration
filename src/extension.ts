@@ -64,10 +64,8 @@ function executeMigrateDown() {
 }
 
 function executeMigrateRerun() {
-	let upCommand = `${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
-	let downCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()}`;
-	executeCommand(upCommand);
-	executeCommand(downCommand);
+	let reRunCommand = `${MIGRATE_SRIPT}:down VERSION=${getMigrationVersion()} && ${MIGRATE_SRIPT}:up VERSION=${getMigrationVersion()}`;
+	executeCommand(reRunCommand);
 	vscode.window.showInformationMessage(`Re-running version ${getMigrationVersion()} ...`);
 }
 

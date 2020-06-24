@@ -2,6 +2,8 @@
 
 This extension provides some keybindings for running Rails migration in build-in VSCode terminal.
 
+![screenshot](screenshot.gif)
+
 ## Why we should use it?
 Have you ever wanted to rollback and re-migrate a specific migration version? Are you bored with coping the version file?
 

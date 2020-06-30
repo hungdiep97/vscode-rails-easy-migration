@@ -1,6 +1,6 @@
 # VSCode Rails easy migration
 
-This extension provides some keybindings for running Rails migration in build-in VSCode terminal.
+This extension provides some keybindings for running Rails migration in build-in VSCode terminal. Install it on https://marketplace.visualstudio.com/items?itemName=HungDiep.vscode-rails-easy-migration.
 
 ![screenshot](screenshot.gif)
 

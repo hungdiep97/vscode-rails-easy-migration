@@ -1,8 +1,10 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+const fs = require("fs");
 
 const TERMINAL_NAME = "Rails easy migration";
 const STRING_TO_SEPERATE = "/db/migrate/";
 const MIGRATE_SRIPT = "bundle exec rake db:migrate"
+const WORKSPACE = vscode.workspace.rootPath
 
 function getCurrentFile() {
 	return vscode.window.activeTextEditor?.document.uri.path;
@@ -68,6 +70,22 @@ function executeMigrateRerun() {
 	vscode.window.showInformationMessage(`⌘+m ⌘+r was pressed. Re-running version ${getMigrationVersion()} ...`);
 }
 
+function openLastestMigrationFile() {
+	fs.readdir(`${WORKSPACE}${STRING_TO_SEPERATE}`, (errors: any, files: string | any[]) => {
+    if (errors) {
+      vscode.window.showErrorMessage("Can not read migration files");
+      return;
+    }
+    if (files.length && files[files.length - 1]) {
+      const lastFile = files[files.length - 1];
+      const path = vscode.Uri.file(`${WORKSPACE}${STRING_TO_SEPERATE}${lastFile}`);
+      vscode.workspace.openTextDocument(path).then((document) => {
+        vscode.window.showTextDocument(document);
+      });
+    }
+  });
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
@@ -91,6 +109,12 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand("extension.migrateRerun", () => {
 			executeMigrateRerun();
+		})
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand("extension.openLatestFile", () => {
+			openLastestMigrationFile();
 		})
 	);
 

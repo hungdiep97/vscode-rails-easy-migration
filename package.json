@@ -4,7 +4,7 @@
 	"description": "Some keybindings help you save time with Rails migration.",
 	"publisher": "HungDiep",
 	"icon": "rails-migration.png",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.46.0"
 	},
@@ -23,7 +23,8 @@
 		"onCommand:extension.migrate",
 		"onCommand:extension.migrateUp",
 		"onCommand:extension.migrateDown",
-		"onCommand:extension.migrateRerun"
+		"onCommand:extension.migrateRerun",
+		"onCommand:extension.openLatestFile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -49,6 +50,10 @@
 			{
 				"command": "extension.migrateRerun",
 				"title": "Rails easy migration Rerun"
+			},
+			{
+				"command": "extension.openLatestFile",
+				"title": "Opening Rails lastest migration file"
 			}
 		],
 		"keybindings": [
@@ -74,6 +79,12 @@
 				"command": "extension.migrateRerun",
 				"key": "ctrl+m ctrl+r",
         "mac": "cmd+m cmd+r",
+        "when": "editorTextFocus"
+			},
+			{
+				"command": "extension.openLatestFile",
+				"key": "ctrl+m ctrl+l",
+        "mac": "cmd+m cmd+l",
         "when": "editorTextFocus"
 			}
 		]

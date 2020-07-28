@@ -84,8 +84,7 @@
 			{
 				"command": "extension.openLatestFile",
 				"key": "ctrl+m ctrl+l",
-        "mac": "cmd+m cmd+l",
-        "when": "editorTextFocus"
+        "mac": "cmd+m cmd+l"
 			}
 		]
 	},

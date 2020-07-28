@@ -18,4 +18,6 @@ This extension mission is checking your current opening Rails migration file and
 - Down it by using: ⌘+m ⌘+d.
 - Re-run the opening by: ⌘+m ⌘+r (Really useful when your table is not stable yet).
 
+Last but not least, the extra command to open your latest migration file: ⌘+m ⌘+l.
+
 **To help you easy to remember the keybindings, the ⌘+m stands for `migrate`.**
